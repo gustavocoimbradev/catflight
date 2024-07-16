@@ -21,6 +21,7 @@ window.addEventListener(`load`, function(){
     restartGame();
     handleRecords();
 
+
     function config() {
         const urlParams = new URLSearchParams(window.location.search);
         const scoreText = urlParams.get('score-text');
@@ -171,4 +172,29 @@ window.addEventListener(`load`, function(){
         }, 3000);
     }
 
+    
+
 })
+
+
+function handlePlayerPictureChange(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        document.getElementById('player-picture').value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function handleEnemyPictureChange(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        document.getElementById('enemy-picture').value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}

@@ -9,6 +9,7 @@ body {
   height: 100vh;
   background: rgb(44, 44, 44);
   font-family: "Verdana", sans-serif;
+  user-select: none;
 }
 body > warning {
   display: none;
@@ -42,13 +43,73 @@ body > my-game playable {
   left: 0;
   overflow: hidden;
 }
-body > my-game > newGame {
+body > my-game > restartGame {
   position: absolute;
   bottom: -55px;
   left: 0;
   display: block;
-  color: black;
-  background: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+  padding: 10px 20px;
+  font-weight: 800;
+  text-align: right;
+  font-size: 14px;
+  z-index: 9;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+body > my-game popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+}
+body > my-game popup.active {
+  opacity: 1;
+  pointer-events: unset;
+}
+body > my-game popup popupBox {
+  background: white;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body > my-game popup popupBox form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body > my-game popup popupBox form label span {
+  display: block;
+  margin: 0 0 4px;
+  font-size: 12px;
+}
+body > my-game popup popupBox form label input {
+  width: 100%;
+  display: block;
+}
+body > my-game popup popupBox form div {
+  display: flex;
+  gap: 10px;
+}
+body > my-game popup popupBox form div button {
+  flex: 1;
+  cursor: pointer;
+}
+body > my-game > createGame {
+  position: absolute;
+  bottom: -55px;
+  left: 210px;
+  display: block;
+  color: rgb(255, 255, 255);
+  background: transparent;
   padding: 10px 20px;
   font-weight: 800;
   text-align: right;
@@ -135,7 +196,7 @@ body > my-game > controls {
 }
 body > my-game > score {
   position: absolute;
-  top: -32px;
+  top: -52px;
   right: 0;
   display: block;
   color: rgb(255, 222, 58);
@@ -144,10 +205,11 @@ body > my-game > score {
   font-size: 12px;
   opacity: 0.6;
   z-index: 9;
+  font-weight: 700;
 }
 body > my-game > record {
   position: absolute;
-  top: -52px;
+  top: -32px;
   right: 0;
   display: block;
   color: white;

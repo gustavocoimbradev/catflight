@@ -9,8 +9,8 @@
 <body>
     <my-game escape-something="true" speed="5">
         <controls>
-            Use "ESPAÇO" para saltar<br/>
-            Aperte "ESC" para começar novamente
+            <b>Controles:</b><br/>
+            Use "ESPAÇO" para saltar
         </controls>
         <score><number>0</number> <text ref="score-text">ponto(s)</text></score>
         <record>Record: <number>0</number> <text ref="record-text">ponto(s)</text></record>
@@ -20,7 +20,39 @@
         </playable>
         <welcome>Evite</welcome>
         <welcome>Evite</welcome>
-        <newGame onClick="javascript:window.location.reload()">Jogar novamente</newGame>
+        <restartGame onClick="javascript:window.location.reload()">Começar novamente</restartGame>
+        <createGame onClick="javascript:document.querySelector(`popup`).classList.add(`active`)">Criar mapa</createGame>
+
+        <popup>
+            <popupBox>
+                <form>
+                    <label for="welcome-text">
+                        <span>Título do jogo</span>
+                        <input type="text" value="Evite" name="welcome-text" id="welcome-text">
+                    </label>
+                    <label for="score-text">
+                        <span>Pontuação</span>
+                        <input type="text" value="ponto(s)" name="score-text" id="score-text">
+                    </label>
+                    <label for="record-text">
+                        <span>Record</span>
+                        <input type="text" value="ponto(s)" name="record-text" id="record-text">
+                    </label>
+                    <label for="player-picture">
+                        <span>Imagem do jogador (URL)</span>
+                        <input type="text" value="https://evite-game.vercel.app/sprites/player.jpg" name="player-picture" id="player-picture">
+                    </label>
+                    <label for="enemy-picture">
+                        <span>Imagem dos inimigos (URL)</span>
+                        <input type="text" value="https://evite-game.vercel.app/sprites/enemy.png" name="enemy-picture" id="enemy-picture">
+                    </label>
+                    <div>
+                        <button onClick="javascript:window.location.reload()">Cancelar</button>
+                        <button type="submit">Criar jogo</button>
+                    </div>
+                </form>
+            </popupBox>
+        </popup>
     </my-game>
     <audio ref="soundtrack" autoplay loop>
         <source src="music/soundtrack.mp3" type="audio/mp3"> 
