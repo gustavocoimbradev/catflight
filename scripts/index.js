@@ -60,7 +60,7 @@ window.addEventListener(`load`, function(){
             enemy.style.left = `${leftPosition}px`;  
             if (leftPosition < -100) {
                 leftPosition = 1000;
-                enemy.style.top = `${Math.floor(Math.random() * 160)}px`
+                enemy.style.top = `${Math.floor(Math.random() * 140)}px`
                 currentScore = parseInt(scoreNumber.textContent);
                 scoreNumber.textContent = currentScore + 1;
             }
