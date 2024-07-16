@@ -30,10 +30,7 @@ window.addEventListener(`load`, function(){
     
     document.addEventListener('keydown', function(event) {
 
-        const audio = document.querySelector(`audio`);
-        if (audio) {
-            audio.play();
-        }
+        audio('soundtrack','play');
 
         if (event.key === 'ArrowUp' && ball) {
             if (!isFlying) {
@@ -67,10 +64,8 @@ window.addEventListener(`load`, function(){
                     window.location.reload();
                 }
             });
-            const audio = document.querySelector(`audio`);
-            if (audio) {
-                audio.pause();
-            }
+            audio('soundtrack','pause');
+            audio('game-over','play');
             if (parseInt(scoreNumber.innerText) > auxRecord) {
                 localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
             }
@@ -85,38 +80,38 @@ window.addEventListener(`load`, function(){
                     window.location.reload();
                 }
             });
-            const audio = document.querySelector(`audio`);
-            if (audio) {
-                audio.pause();
-            }
+            audio('soundtrack','pause');
+            audio('game-over','play');
             if (parseInt(scoreNumber.innerText) > auxRecord) {
                 localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
             }
         }
 
-        if (enemy.getBoundingClientRect().left < 360 && enemy.getBoundingClientRect().left > 300) {
-            const enemyRect = enemy.getBoundingClientRect();
-            const ballRect = ball.getBoundingClientRect();
-            
-            if (Math.abs(enemyRect.top - ballRect.top) < 30) {
-                clearInterval(enemies);
-                clearInterval(map);
-                myGame.setAttribute(`you-lost`,true);
-                isFlying = false;
-                const audio = document.querySelector(`audio`);
-                if (audio) {
-                    audio.pause();
+        const enemyRect = enemy.getBoundingClientRect();
+        const ballRect = ball.getBoundingClientRect();
+
+        const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 30;
+        const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 30;
+
+        if (horizontalProximity && verticalProximity) {
+            clearInterval(enemies);
+            clearInterval(map);
+            myGame.setAttribute(`you-lost`, true);
+            isFlying = false;
+
+            const audio = document.querySelector(`audio`);
+            audio.pause(); 
+            audio.play(); 
+
+            document.addEventListener('keyup', function(event) {
+                if (event.code === 'Space' || event.key === ' ') {
+                    window.location.reload(); 
                 }
-                document.addEventListener('keyup', function(event) {
-                    if (event.code === 'Space' || event.key === ' ') {
-                        window.location.reload();
-                    }
-                });
-            } 
+            });
+
             if (parseInt(scoreNumber.innerText) > auxRecord) {
-                localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
+                localStorage.setItem(`record`, parseInt(scoreNumber.innerText));
             }
-            
         }
 
     }, 100);
@@ -150,5 +145,16 @@ window.addEventListener(`load`, function(){
     }, 5000);
  
   
-
+    // Utils
+    
+    function audio(ref= '', action = 'play') {
+        const soundtrack = document.querySelector(`[ref='${ref}']`);
+        if (soundtrack) {
+            if (action == 'play') {
+                soundtrack.play();
+            } else if (action == 'pause') {
+                soundtrack.pause();
+            }
+        }
+    }
 })
