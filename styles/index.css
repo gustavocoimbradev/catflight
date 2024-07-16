@@ -34,6 +34,9 @@ body > my-game {
   height: 200px;
   max-width: 100%;
 }
+body > my-game[you-lost] > welcome {
+  display: none !important;
+}
 body > my-game[you-lost]::after {
   content: "Você perdeu!";
   position: absolute;
@@ -69,7 +72,19 @@ body > my-game[you-lost] > ball {
 body > my-game[you-lost] > enemy {
   display: none;
 }
+body > my-game > welcome {
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  color: white;
+  font-weight: 900;
+  top: 20px;
+  left: 20px;
+  font-size: 12px;
+  opacity: 0.6;
+}
 body > my-game[escape-something] > welcome {
+  opacity: 1;
   position: absolute;
   width: 100%;
   height: 150px;
@@ -81,11 +96,6 @@ body > my-game[escape-something] > welcome {
   display: grid;
   place-items: center;
   font-size: 50px;
-}
-@media (max-width: 1199px) {
-  body > my-game[escape-something] > welcome {
-    font-size: 20px;
-  }
 }
 body > my-game > controls {
   position: absolute;
