@@ -27,7 +27,7 @@ window.addEventListener(`load`, function(){
         const recordText = urlParams.get('record-text');
         const playerPicture = urlParams.get('player-picture');
         const enemyPicture = urlParams.get('enemy-picture');
-        const welcomeText = urlParams.get('welcomeText');
+        const welcomeText = urlParams.get('welcome-text');
         if (scoreText) {
             document.querySelector(`[ref='score-text']`).innerText = scoreText;
         }
