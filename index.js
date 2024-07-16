@@ -5,6 +5,7 @@ window.addEventListener(`load`, function(){
     const myGame = document.querySelector(`my-game`);
     const ball = myGame.querySelector(`ball`);
     const enemy = myGame.querySelector(`enemy`);
+    const scoreNumber = myGame.querySelector(`number`);
 
     // Fly
     
@@ -74,6 +75,11 @@ window.addEventListener(`load`, function(){
                         window.location.reload();
                     }
                 });
+            } else {
+                if (enemy.getBoundingClientRect().left == 300) {
+                    const currentScore = parseInt(scoreNumber.textContent);
+                    scoreNumber.textContent = currentScore + 1;
+                }
             }
         }
 
