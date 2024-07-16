@@ -130,7 +130,7 @@ window.addEventListener(`load`, function(){
                 gameOver();
             }
     
-        }, 100);
+        }, 500);
     }
 
     function flyBall() {
