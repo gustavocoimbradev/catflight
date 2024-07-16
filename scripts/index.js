@@ -40,11 +40,6 @@ window.addEventListener(`load`, function(){
         clearInterval(enemies);
         clearInterval(map);
         myGame.setAttribute(`you-lost`,true);
-        document.addEventListener('keyup', function(event) {
-            if (event.code === 'Space' || event.key === ' ') {
-                window.location.reload();
-            }
-        });
         if (parseInt(scoreNumber.innerText) > auxRecord) {
             localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
         }
