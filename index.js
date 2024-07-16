@@ -7,9 +7,15 @@ window.addEventListener(`load`, function(){
     const enemy = myGame.querySelector(`enemy`);
     const scoreNumber = myGame.querySelector(`number`);
 
+    let isFlying = true;
+
+    setTimeout(function(){
+        isFlying = false;
+        myGame.removeAttribute(`escape-the-meat`);
+    }, 3000);
+
     // Fly
     
-    let isFlying = false;
     
     document.addEventListener('keydown', function(event) {
 
