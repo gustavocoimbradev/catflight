@@ -95,7 +95,7 @@ window.addEventListener(`load`, function(){
                 currentScore = parseInt(scoreNumber.textContent);
                 scoreNumber.textContent = currentScore + 1;
             }
-        }, 20);
+        }, 30);
     }
 
     function scrollMap() {
