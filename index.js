@@ -145,12 +145,12 @@ window.addEventListener(`load`, function(){
     // Utils
     
     function audio(ref= '', action = 'play') {
-        const soundtrack = document.querySelector(`[ref='${ref}']`);
-        if (soundtrack) {
+        const audio = document.querySelector(`[ref='${ref}']`);
+        if (audio) {
             if (action == 'play') {
-                soundtrack.play();
+                audio.play();
             } else if (action == 'pause') {
-                soundtrack.pause();
+                audio.pause();
             }
         }
     }
