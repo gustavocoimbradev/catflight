@@ -45,19 +45,7 @@ window.addEventListener(`load`, function(){
             ball.style.top = '120%';
         }
     });
-    
-    document.addEventListener('click', () => {
-        const eventoKeyup = new KeyboardEvent('keyup', {
-          key: 'ArrowUp',
-          keyCode: 38,
-        });
-        document.dispatchEvent(eventoKeyup);
-        const eventoKeydown = new KeyboardEvent('keydown', {
-          key: 'ArrowUp',
-          keyCode: 38,
-        });
-        document.dispatchEvent(eventoKeydown);
-      });
+
 
     // Check
 
