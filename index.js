@@ -11,15 +11,15 @@ window.addEventListener(`load`, function(){
     let map;
     let auxRecord;
 
-    handleRecords();
     hideGameName();
     flyBall();
     checkPosition();
-    restartGame();
     scrollMap();
     sendEnemies();
     speedUp();
-     
+    restartGame();
+    handleRecords();
+
     function audio(ref= '', action = 'play') {
         const audio = document.querySelector(`[ref='${ref}']`);
         if (audio) {
