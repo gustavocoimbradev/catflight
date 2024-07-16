@@ -125,7 +125,7 @@ function checkPosition() {
             const margin = 50;
             const childRect = ball.getBoundingClientRect();
             const parentRect = playable.getBoundingClientRect();
-            const insideVertically = childRect.top >= parentRect.top - margin && childRect.bottom <= parentRect.bottom + margin;
+            const insideVertically = childRect.top >= parentRect.top - margin && childRect.bottom <= parentRect.bottom;
             return insideVertically;
         }
         
