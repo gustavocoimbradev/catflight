@@ -20,13 +20,18 @@ window.addEventListener(`load`, function(){
     restartGame();
     handleRecords();
 
-    function audio(ref= '', action = 'play') {
+    function audio(ref = '', action = 'play') {
         const audio = document.querySelector(`[ref='${ref}']`);
         if (audio) {
             if (action == 'play') {
                 audio.play();
+                if (ref == 'game-over') {
+                    const soundtrack = document.querySelector(`[ref='soundtrack']`);
+                    soundtrack.remove();
+                }
             } else if (action == 'pause') {
                 audio.pause();
+                audio.remove();
             }
         }
     }
@@ -49,8 +54,8 @@ window.addEventListener(`load`, function(){
 
     function speedUp() {
         setInterval(function(){
-            myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + 2);
-        }, 5000);
+            myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + .001);
+        }, .1);
     }
 
     function sendEnemies() {
@@ -60,7 +65,7 @@ window.addEventListener(`load`, function(){
             enemy.style.left = `${leftPosition}px`;  
             if (leftPosition < -100) {
                 leftPosition = 1000;
-                enemy.style.top = `${Math.floor(Math.random() * 140)}px`
+                enemy.style.top = `${Math.floor(Math.random() * 120)}px`
                 currentScore = parseInt(scoreNumber.textContent);
                 scoreNumber.textContent = currentScore + 1;
             }
