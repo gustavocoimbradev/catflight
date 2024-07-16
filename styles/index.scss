@@ -74,7 +74,7 @@ body {
 
         &[escape-something] {
             &::after {
-                content: 'Escape something';
+                content: 'Escape';
                 position: absolute;
                 width: 100%;
                 height: 150px;
