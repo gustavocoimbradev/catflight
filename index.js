@@ -35,7 +35,7 @@ window.addEventListener(`load`, function(){
         if (event.key === 'ArrowUp' && ball) {
             if (!isFlying) {
                 isFlying = true;
-                ball.style.transition = 'top 0.6s';
+                ball.style.transition = 'top 0.3s';
                 ball.style.top = '-20%';
             }
         }
@@ -44,12 +44,12 @@ window.addEventListener(`load`, function(){
     document.addEventListener('keyup', function(event) {
         if (event.key === 'ArrowUp' && ball) {
             isFlying = false;
-            ball.style.transition = 'top 1.2s';
+            ball.style.transition = 'top .3s';
             ball.style.top = '120%';
         }
     });
     
- 
+  
 
     // Check
 
@@ -157,4 +157,7 @@ window.addEventListener(`load`, function(){
             }
         }
     }
+
+    
+
 })
