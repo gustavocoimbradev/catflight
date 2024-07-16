@@ -46,8 +46,6 @@ window.addEventListener(`load`, function(){
         }
     });
     
-
-
     // Check
 
     setInterval(function() {
