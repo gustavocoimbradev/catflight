@@ -133,7 +133,6 @@ window.addEventListener(`load`, function(){
         myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + 0.5);
     }, 5000);
  
- 
-
+  
 
 })

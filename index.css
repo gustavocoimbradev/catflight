@@ -105,5 +105,10 @@ body > my-game > enemy {
   left: 1000px;
   bottom: 0;
 }
+body > iframe {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
 
 /*# sourceMappingURL=index.css.map */
