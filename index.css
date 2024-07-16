@@ -55,6 +55,7 @@ body > my-game > score {
   text-align: right;
   font-size: 12px;
   opacity: 0.6;
+  z-index: 9;
 }
 body > my-game > score > span {
   margin-top: 10px;

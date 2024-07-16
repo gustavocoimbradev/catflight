@@ -65,7 +65,7 @@ window.addEventListener(`load`, function(){
         if (enemy.getBoundingClientRect().left < 360 && enemy.getBoundingClientRect().left > 300) {
             const enemyRect = enemy.getBoundingClientRect();
             const ballRect = ball.getBoundingClientRect();
-            if (Math.abs(enemyRect.top - ballRect.top) < 50) {
+            if (Math.abs(enemyRect.top - ballRect.top) < 30) {
                 clearInterval(enemies);
                 clearInterval(map);
                 myGame.setAttribute(`you-lost`,true);
@@ -105,7 +105,7 @@ window.addEventListener(`load`, function(){
     // Speed up
 
     setInterval(function(){
-        myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + .1);
+        myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + 0.1);
     }, 5000);
 
 })
