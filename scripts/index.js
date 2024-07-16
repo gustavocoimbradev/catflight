@@ -89,11 +89,13 @@ window.addEventListener(`load`, function(){
     }
 
     function checkPosition() {
-        setInterval(function() {
+        const interval = setInterval(function() {
             if (ball.getBoundingClientRect().top > 570) {
+                clearInterval(interval);
                 gameOver();
             }
             if (ball.getBoundingClientRect().top < 320) {
+                clearInterval(interval);
                 gameOver();
             }
     
@@ -104,6 +106,7 @@ window.addEventListener(`load`, function(){
             const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 30;
     
             if (horizontalProximity && verticalProximity) {
+                clearInterval(interval);
                 gameOver();
             }
     
