@@ -154,6 +154,9 @@ body > my-game[you-lost] ball {
 body > my-game[you-lost] enemy {
   display: none;
 }
+body > my-game[you-lost] > welcome {
+  display: none !important;
+}
 body > my-game > welcome:first-of-type {
   position: absolute;
   width: 100%;
