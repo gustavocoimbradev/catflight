@@ -12,10 +12,10 @@ body {
     >my-game {
         position: relative;
         overflow: hidden;
-        background-image: url('map2.jpg');
+        background-image: url('map.jpg');
         background-size: contain;
         background-repeat: repeat;
-        width: 900px;
+        width: 900px; 
         height: 200px;
 
         &[you-lost] {
