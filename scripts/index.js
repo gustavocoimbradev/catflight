@@ -10,6 +10,7 @@ window.addEventListener(`load`, function(){
     let currentScore;
     let map;
     let auxRecord;
+    let varSpeedUp;
 
     config();
     hideGameName();
@@ -65,6 +66,7 @@ window.addEventListener(`load`, function(){
     function gameOver() {
         clearInterval(enemies);
         clearInterval(map);
+        clearInterval(varSpeedUp);
         myGame.setAttribute(`you-lost`,true);
         if (parseInt(scoreNumber.innerText) > auxRecord) {
             localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
@@ -74,7 +76,7 @@ window.addEventListener(`load`, function(){
     }
 
     function speedUp() {
-        setInterval(function(){
+        varSpeedUp = setInterval(function(){
             myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + .001);
         }, .1);
     }
@@ -123,9 +125,11 @@ window.addEventListener(`load`, function(){
             const enemyRect = enemy.getBoundingClientRect();
             const ballRect = ball.getBoundingClientRect();
     
-            const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 30;
-            const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 30;
-    
+            const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 50;
+            const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 50;
+            
+            console.log(horizontalProximity && verticalProximity)
+
             if (horizontalProximity && verticalProximity) {
                 clearInterval(interval);
                 gameOver();
