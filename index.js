@@ -71,7 +71,7 @@ window.addEventListener(`load`, function(){
             if (audio) {
                 audio.pause();
             }
-            if (parseInt(scoreNumber.innerText) > parseInt(localStorage.getItem(`record`))) {
+            if (parseInt(scoreNumber.innerText) > auxRecord) {
                 localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
             }
         }
@@ -89,7 +89,7 @@ window.addEventListener(`load`, function(){
             if (audio) {
                 audio.pause();
             }
-            if (parseInt(scoreNumber.innerText) > parseInt(localStorage.getItem(`record`))) {
+            if (parseInt(scoreNumber.innerText) > auxRecord) {
                 localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
             }
         }
@@ -113,7 +113,7 @@ window.addEventListener(`load`, function(){
                     }
                 });
             } 
-            if (parseInt(scoreNumber.innerText) > parseInt(localStorage.getItem(`record`))) {
+            if (parseInt(scoreNumber.innerText) > auxRecord) {
                 localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
             }
             
