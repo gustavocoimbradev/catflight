@@ -132,7 +132,7 @@ window.addEventListener(`load`, function(){
         enemy.style.left = `${leftPosition}px`;  
         if (leftPosition < -100) {
             leftPosition = 1000;
-            enemy.style.bottom = `${Math.floor(Math.random() * 160)}px`
+            enemy.style.top = `${Math.floor(Math.random() * 160)}px`
             const currentScore = parseInt(scoreNumber.textContent);
             scoreNumber.textContent = currentScore + 1;
         }
