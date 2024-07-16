@@ -43,7 +43,10 @@ window.addEventListener(`load`, function(){
             document.querySelector(`enemy`).style.backgroundImage = `url(${enemyPicture})`;
         }
         if (welcomeText) {
-            document.querySelector(`welcome`).innerText = `${welcomeText}`;
+            const welcomes = document.querySelectorAll(`welcome`);
+            welcomes.forEach(function(welcome) {
+                welcome.querySelector(`welcome`).innerText = `${welcomeText}`;
+            })
         }
     }
 
