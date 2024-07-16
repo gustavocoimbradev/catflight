@@ -115,8 +115,8 @@ window.addEventListener(`load`, function(){
 
     function flyBall() {
         document.addEventListener('keydown', function(event) {
-            audio('soundtrack','play');
-            if (event.key === 'ArrowUp' && ball) {
+            audio('soundtrack', 'play');
+            if (event.key === ' ' && ball) {
                 if (!isFlying) {
                     isFlying = true;
                     ball.style.transition = 'top .6s';
@@ -125,13 +125,14 @@ window.addEventListener(`load`, function(){
             }
         });
         document.addEventListener('keyup', function(event) {
-            if (event.key === 'ArrowUp' && ball) {
+            if (event.key === ' ' && ball) {
                 isFlying = false;
                 ball.style.transition = 'top 1s';
                 ball.style.top = '120%';
             }
         });
     }
+    
 
     function handleRecords() {
         if (localStorage.getItem(`record`)) {
