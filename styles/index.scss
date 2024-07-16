@@ -72,9 +72,9 @@ body {
             }
         }
 
-        &[escape-the-meat] {
+        &[escape-something] {
             &::after {
-                content: 'Escape the meat';
+                content: 'Escape something';
                 position: absolute;
                 width: 100%;
                 height: 150px;
@@ -136,7 +136,6 @@ body {
             position: absolute;
             border-radius: 100%;
             transition: all .5s;
-            background-image: url(../sprites/player.png);
             background-size: cover;
             background-position: center;
             width: 50px;
@@ -147,6 +146,7 @@ body {
         }
 
         >enemy {
+            border-radius: 100%;
             display: block;
             position: absolute;
             background-image: url(../sprites/enemy.png);

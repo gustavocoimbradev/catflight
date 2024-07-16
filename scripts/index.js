@@ -11,6 +11,7 @@ window.addEventListener(`load`, function(){
     let map;
     let auxRecord;
 
+    config();
     hideGameName();
     flyBall();
     checkPosition();
@@ -19,6 +20,26 @@ window.addEventListener(`load`, function(){
     speedUp();
     restartGame();
     handleRecords();
+
+    function config() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const scoreText = urlParams.get('score-text');
+        const recordText = urlParams.get('record-text');
+        const playerPicture = urlParams.get('player-picture');
+        const enemyPicture = urlParams.get('enemy-picture');
+        if (scoreText) {
+            document.querySelector(`[ref='score-text']`).innerText = scoreText;
+        }
+        if (recordText) {
+            document.querySelector(`[ref='record-text']`).innerText = recordText;
+        }
+        if (playerPicture) {
+            document.querySelector(`ball`).style.backgroundImage = `url(${playerPicture})`;
+        }
+        if (enemyPicture) {
+            document.querySelector(`enemy`).style.backgroundImage = `url(${enemyPicture})`;
+        }
+    }
 
     function audio(ref = '', action = 'play') {
         const audio = document.querySelector(`[ref='${ref}']`);
@@ -142,7 +163,7 @@ window.addEventListener(`load`, function(){
     function hideGameName() {
         setTimeout(function(){
             isFlying = false;
-            myGame.removeAttribute(`escape-the-meat`);
+            myGame.removeAttribute(`escape-something`);
         }, 3000);
     }
 

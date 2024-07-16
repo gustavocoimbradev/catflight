@@ -69,8 +69,8 @@ body > my-game[you-lost] > ball {
 body > my-game[you-lost] > enemy {
   display: none;
 }
-body > my-game[escape-the-meat]::after {
-  content: "Escape the meat";
+body > my-game[escape-something]::after {
+  content: "Escape something";
   position: absolute;
   width: 100%;
   height: 150px;
@@ -84,7 +84,7 @@ body > my-game[escape-the-meat]::after {
   font-size: 50px;
 }
 @media (max-width: 1199px) {
-  body > my-game[escape-the-meat]::after {
+  body > my-game[escape-something]::after {
     font-size: 20px;
   }
 }
@@ -130,7 +130,6 @@ body > my-game > ball {
   position: absolute;
   border-radius: 100%;
   transition: all 0.5s;
-  background-image: url(../sprites/player.png);
   background-size: cover;
   background-position: center;
   width: 50px;
@@ -140,6 +139,7 @@ body > my-game > ball {
   transform: translateY(-50%);
 }
 body > my-game > enemy {
+  border-radius: 100%;
   display: block;
   position: absolute;
   background-image: url(../sprites/enemy.png);
