@@ -49,7 +49,7 @@ window.addEventListener(`load`, function(){
 
     function speedUp() {
         setInterval(function(){
-            myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + 1);
+            myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + 2);
         }, 5000);
     }
 
