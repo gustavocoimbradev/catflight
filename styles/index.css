@@ -69,8 +69,7 @@ body > my-game[you-lost] > ball {
 body > my-game[you-lost] > enemy {
   display: none;
 }
-body > my-game[escape-something]::after {
-  content: "Escape";
+body > my-game[escape-something] > welcome {
   position: absolute;
   width: 100%;
   height: 150px;
@@ -84,7 +83,7 @@ body > my-game[escape-something]::after {
   font-size: 50px;
 }
 @media (max-width: 1199px) {
-  body > my-game[escape-something]::after {
+  body > my-game[escape-something] > welcome {
     font-size: 20px;
   }
 }

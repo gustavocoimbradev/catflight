@@ -27,6 +27,7 @@ window.addEventListener(`load`, function(){
         const recordText = urlParams.get('record-text');
         const playerPicture = urlParams.get('player-picture');
         const enemyPicture = urlParams.get('enemy-picture');
+        const welcomeText = urlParams.get('welcomeText');
         if (scoreText) {
             document.querySelector(`[ref='score-text']`).innerText = scoreText;
         }
@@ -38,6 +39,9 @@ window.addEventListener(`load`, function(){
         }
         if (enemyPicture) {
             document.querySelector(`enemy`).style.backgroundImage = `url(${enemyPicture})`;
+        }
+        if (welcomeText) {
+            document.querySelector(`welcome`).innerText = `${welcomeText}`;
         }
     }
 
