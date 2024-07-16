@@ -27,7 +27,7 @@ body > warning {
 body > my-game {
   position: relative;
   overflow: hidden;
-  background-image: url("map.jpg");
+  background-image: url(../sprites/map.jpg);
   background-size: contain;
   background-repeat: repeat;
   width: 900px;
@@ -130,7 +130,7 @@ body > my-game > ball {
   position: absolute;
   border-radius: 100%;
   transition: all 0.5s;
-  background-image: url(player.png);
+  background-image: url(../sprites/player.png);
   background-size: cover;
   background-position: center;
   width: 50px;
@@ -142,7 +142,7 @@ body > my-game > ball {
 body > my-game > enemy {
   display: block;
   position: absolute;
-  background-image: url(enemy.png);
+  background-image: url(../sprites/enemy.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
