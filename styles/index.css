@@ -161,10 +161,22 @@ body > my-game > enemy {
   top: 50%;
   transform: translateY(-50%);
 }
-body > iframe {
-  position: fixed;
-  opacity: 0;
-  pointer-events: none;
+body > newGame {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: block;
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+  text-align: right;
+  font-size: 12px;
+  opacity: 0.6;
+  z-index: 9;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+body > newGame:hover {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=index.css.map */
