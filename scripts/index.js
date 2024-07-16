@@ -128,8 +128,8 @@ window.addEventListener(`load`, function(){
             const enemyRect = enemy.getBoundingClientRect();
             const ballRect = ball.getBoundingClientRect();
     
-            const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 50;
-            const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 50;
+            const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 70;
+            const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 70;
             
             console.log(horizontalProximity && verticalProximity)
 
