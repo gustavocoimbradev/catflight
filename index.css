@@ -1,0 +1,76 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: rgb(44, 44, 44);
+}
+body > my-game {
+  position: relative;
+  overflow: hidden;
+  background-image: url("map.jpg");
+  background-size: contain;
+  background-repeat: repeat;
+  width: 900px;
+  height: 200px;
+}
+body > my-game[you-lost]::after {
+  content: "Você perdeu!";
+  position: absolute;
+  width: 400px;
+  height: 150px;
+  color: red;
+  font-weight: 900;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+}
+body > my-game[you-lost] > ball {
+  filter: hue-rotate(-15deg) saturate(200%);
+  animation: fadeOut 0.3s forwards;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+body > my-game[you-lost] > enemy {
+  display: none;
+}
+body > my-game > ball {
+  background: rgb(255, 255, 255);
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  transition: all 0.5s;
+  background-image: url(player.png);
+  background-size: cover;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+body > my-game > enemy {
+  display: block;
+  position: absolute;
+  background-image: url(enemy.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  left: 1000px;
+  bottom: 0;
+}
+
+/*# sourceMappingURL=index.css.map */
