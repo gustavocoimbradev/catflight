@@ -17,6 +17,7 @@ body > my-game {
   background-repeat: repeat;
   width: 900px;
   height: 200px;
+  max-width: 100%;
 }
 body > my-game[you-lost]::after {
   content: "Você perdeu!";
@@ -31,6 +32,11 @@ body > my-game[you-lost]::after {
   display: grid;
   place-items: center;
   font-size: 50px;
+}
+@media (max-width: 1199px) {
+  body > my-game[you-lost]::after {
+    font-size: 20px;
+  }
 }
 body > my-game[you-lost] > ball {
   filter: hue-rotate(-15deg) saturate(200%);
@@ -60,6 +66,11 @@ body > my-game[escape-the-meat]::after {
   display: grid;
   place-items: center;
   font-size: 50px;
+}
+@media (max-width: 1199px) {
+  body > my-game[escape-the-meat]::after {
+    font-size: 20px;
+  }
 }
 body > my-game > controls {
   position: absolute;
