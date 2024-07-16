@@ -50,36 +50,10 @@ window.addEventListener(`load`, function(){
 
     setInterval(function() {
         if (ball.getBoundingClientRect().top > 570) {
-            clearInterval(enemies);
-            clearInterval(map);
-            myGame.setAttribute(`you-lost`,true);
-            ball.remove();
-            document.addEventListener('keyup', function(event) {
-                if (event.code === 'Space' || event.key === ' ') {
-                    window.location.reload();
-                }
-            });
-            audio('soundtrack','pause');
-            audio('game-over','play');
-            if (parseInt(scoreNumber.innerText) > auxRecord) {
-                localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
-            }
+            gameOver();
         }
         if (ball.getBoundingClientRect().top < 320) {
-            clearInterval(enemies);
-            clearInterval(map);
-            myGame.setAttribute(`you-lost`,true);
-            ball.remove();
-            document.addEventListener('keyup', function(event) {
-                if (event.code === 'Space' || event.key === ' ') {
-                    window.location.reload();
-                }
-            });
-            audio('soundtrack','pause');
-            audio('game-over','play');
-            if (parseInt(scoreNumber.innerText) > auxRecord) {
-                localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
-            }
+            gameOver();
         }
 
         const enemyRect = enemy.getBoundingClientRect();
@@ -89,18 +63,7 @@ window.addEventListener(`load`, function(){
         const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 30;
 
         if (horizontalProximity && verticalProximity) {
-            clearInterval(enemies);
-            clearInterval(map);
-            myGame.setAttribute(`you-lost`, true);
-            isFlying = false;
-
-            const audio = document.querySelector(`audio`);
-            audio.pause(); 
-            audio.play();   
-
-            if (parseInt(scoreNumber.innerText) > auxRecord) {
-                localStorage.setItem(`record`, parseInt(scoreNumber.innerText));
-            }
+            gameOver();
         }
 
     }, 100);
@@ -152,6 +115,22 @@ window.addEventListener(`load`, function(){
             } else if (action == 'pause') {
                 audio.pause();
             }
+        }
+    }
+
+    function gameOver() {
+        clearInterval(enemies);
+        clearInterval(map);
+        myGame.setAttribute(`you-lost`,true);
+        document.addEventListener('keyup', function(event) {
+            if (event.code === 'Space' || event.key === ' ') {
+                window.location.reload();
+            }
+        });
+        audio('soundtrack','pause');
+        audio('game-over','play');
+        if (parseInt(scoreNumber.innerText) > auxRecord) {
+            localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
         }
     }
 

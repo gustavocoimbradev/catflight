@@ -57,6 +57,7 @@ body {
             >ball {
                 filter: hue-rotate(-15deg) saturate(200%);
                 animation: fadeOut .3s forwards;
+                animation-delay: .3s;
                 @keyframes fadeOut {
                     0% {
                       opacity: 1;
