@@ -63,7 +63,7 @@ window.addEventListener(`load`, function(){
             });
             const audio = document.querySelector(`audio`);
             if (audio) {
-                audio.stop();
+                audio.pause();
             }
         }
         if (ball.getBoundingClientRect().top < 320) {
@@ -78,7 +78,7 @@ window.addEventListener(`load`, function(){
             });
             const audio = document.querySelector(`audio`);
             if (audio) {
-                audio.stop();
+                audio.pause();
             }
         }
 
