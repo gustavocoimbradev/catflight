@@ -12,6 +12,12 @@ window.addEventListener(`load`, function(){
     let isFlying = false;
     
     document.addEventListener('keydown', function(event) {
+
+        const audio = document.querySelector(`audio`);
+        if (audio) {
+            audio.play();
+        }
+
         if (event.key === 'ArrowUp' && ball) {
             if (!isFlying) {
                 isFlying = true;
@@ -107,5 +113,8 @@ window.addEventListener(`load`, function(){
     setInterval(function(){
         myGame.setAttribute(`speed`,parseFloat(myGame.getAttribute(`speed`)) + 0.1);
     }, 5000);
+
+ 
+
 
 })
