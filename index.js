@@ -34,7 +34,7 @@ window.addEventListener(`load`, function(){
                 isFlying = true;
                 ball.style.transition = 'top .6s';
                 ball.style.top = '-20%';
-            } 
+            }
         }
     });
     
