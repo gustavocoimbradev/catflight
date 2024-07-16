@@ -45,7 +45,7 @@ window.addEventListener(`load`, function(){
         if (welcomeText) {
             const welcomes = document.querySelectorAll(`welcome`);
             welcomes.forEach(function(welcome) {
-                welcome.querySelector(`welcome`).innerText = `${welcomeText}`;
+                welcome.innerText = `${welcomeText}`;
             })
         }
     }
