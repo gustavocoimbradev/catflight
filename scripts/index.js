@@ -138,7 +138,7 @@ window.addEventListener(`load`, function(){
                 gameOver();
             }
     
-        }, 500);
+        }, .1);
     }
 
     function flyBall() {
