@@ -14,7 +14,7 @@ body {
 body > warning {
   display: none;
 }
-@media (max-width: 1199px) {
+@media (max-width: 768px) {
   body > my-game {
     display: none;
   }
