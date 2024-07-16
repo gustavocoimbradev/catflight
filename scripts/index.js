@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     config();
     hideGameName();
     flyBall();
-    scrollMap
+    scrollMap();
     checkPosition();
     sendEnemies();
     speedUp();
