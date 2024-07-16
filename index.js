@@ -5,7 +5,18 @@ window.addEventListener(`load`, function(){
     const myGame = document.querySelector(`my-game`);
     const ball = myGame.querySelector(`ball`);
     const enemy = myGame.querySelector(`enemy`);
-    const scoreNumber = myGame.querySelector(`number`);
+    const scoreNumber = myGame.querySelector(`score>number`);
+    const recordNumber = myGame.querySelector(`record>number`);
+ 
+    let auxRecord;
+
+    if (localStorage.getItem(`record`)) {
+        recordNumber.innerText = localStorage.getItem(`record`);
+        auxRecord = parseInt(localStorage.getItem(`record`));
+    } else {
+        recordNumber.innerText = 0;
+        auxRecord = 0;
+    }
 
     let isFlying = true;
 
@@ -60,6 +71,9 @@ window.addEventListener(`load`, function(){
             if (audio) {
                 audio.pause();
             }
+            if (parseInt(scoreNumber.innerText) > parseInt(localStorage.getItem(`record`))) {
+                localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
+            }
         }
         if (ball.getBoundingClientRect().top < 320) {
             clearInterval(enemies);
@@ -74,6 +88,9 @@ window.addEventListener(`load`, function(){
             const audio = document.querySelector(`audio`);
             if (audio) {
                 audio.pause();
+            }
+            if (parseInt(scoreNumber.innerText) > parseInt(localStorage.getItem(`record`))) {
+                localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
             }
         }
 
@@ -96,6 +113,9 @@ window.addEventListener(`load`, function(){
                     }
                 });
             } 
+            if (parseInt(scoreNumber.innerText) > parseInt(localStorage.getItem(`record`))) {
+                localStorage.setItem(`record`,parseInt(scoreNumber.innerText));
+            }
             
         }
 
