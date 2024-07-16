@@ -98,13 +98,7 @@ window.addEventListener(`load`, function(){
 
             const audio = document.querySelector(`audio`);
             audio.pause(); 
-            audio.play(); 
-
-            document.addEventListener('keyup', function(event) {
-                if (event.code === 'Space' || event.key === ' ') {
-                    window.location.reload(); 
-                }
-            });
+            audio.play();   
 
             if (parseInt(scoreNumber.innerText) > auxRecord) {
                 localStorage.setItem(`record`, parseInt(scoreNumber.innerText));
@@ -112,7 +106,15 @@ window.addEventListener(`load`, function(){
         }
 
     }, 100);
-    
+
+    // Restart
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            window.location.reload(); 
+        }
+    });
+
     // Map 
 
     let backgroundPosition = 0;
