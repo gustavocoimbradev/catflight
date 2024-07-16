@@ -122,12 +122,13 @@ function checkPosition() {
     const interval = setInterval(function() {
 
         function isElementInsideParent() {
+            const margin = 50;
             const childRect = ball.getBoundingClientRect();
             const parentRect = playable.getBoundingClientRect();
-            const insideHorizontally = childRect.left >= parentRect.left && childRect.right <= parentRect.right;
-            const insideVertically = childRect.top >= parentRect.top && childRect.bottom <= parentRect.bottom;
-            return insideHorizontally && insideVertically;
+            const insideVertically = childRect.top >= parentRect.top - margin && childRect.bottom <= parentRect.bottom + margin;
+            return insideVertically;
         }
+        
 
 
         if (!isElementInsideParent()) {
