@@ -131,8 +131,6 @@ window.addEventListener(`load`, function(){
             const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 30;
             const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 30;
             
-            console.log(horizontalProximity && verticalProximity)
-
             if (horizontalProximity && verticalProximity) {
                 clearInterval(interval);
                 gameOver();
