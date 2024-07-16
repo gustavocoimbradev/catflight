@@ -27,17 +27,14 @@ window.addEventListener(`load`, function(){
 
     // Fly
     
-    
     document.addEventListener('keydown', function(event) {
-
         audio('soundtrack','play');
-
         if (event.key === 'ArrowUp' && ball) {
             if (!isFlying) {
                 isFlying = true;
                 ball.style.transition = 'top .6s';
                 ball.style.top = '-20%';
-            }
+            } 
         }
     });
     
