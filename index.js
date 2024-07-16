@@ -64,7 +64,7 @@ window.addEventListener(`load`, function(){
         if (enemy.getBoundingClientRect().left < 360 && enemy.getBoundingClientRect().left > 300) {
             const enemyRect = enemy.getBoundingClientRect();
             const ballRect = ball.getBoundingClientRect();
-            if (Math.abs(enemyRect.top - ballRect.top) < 50) {
+            if (Math.abs(enemyRect.top - ballRect.top) < 70) {
                 clearInterval(enemies);
                 clearInterval(map);
                 myGame.setAttribute(`you-lost`,true);
