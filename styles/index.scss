@@ -28,13 +28,39 @@ body {
 
     >my-game {
         position: relative;
-        overflow: hidden;
         background-image: url(../sprites/map.jpg);
         background-size: contain;
         background-repeat: repeat;
         width: 900px; 
         height: 200px;
         max-width: 100%;
+
+        playable {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        >newGame {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            display: block;
+            color: rgb(88, 235, 48);
+            font-weight: 800;
+            text-align: right;
+            font-size: 14px;
+            opacity: .6;
+            z-index: 9;
+            transition: all .1s;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+            }
+        }
 
         &[you-lost] {
             >welcome {
@@ -57,7 +83,7 @@ body {
                     font-size: 20px;
                 }
             }
-            >ball {
+            ball {
                 filter: hue-rotate(-15deg) saturate(200%);
                 animation: fadeOut .3s forwards;
                 animation-delay: .3s;
@@ -70,7 +96,7 @@ body {
                     }
                 }
             }
-            >enemy {
+            enemy {
                 display: none;
             }
         }
@@ -106,8 +132,8 @@ body {
 
         >controls {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: -60px;
+            right: 0;
             display: block;
             color: rgb(255, 255, 255);
             font-weight: 800;
@@ -115,12 +141,13 @@ body {
             font-size: 12px;
             opacity: .6;
             z-index: 9;
+            line-height: 170%;  
         }
 
         >score {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: -32px;
+            right: 0;
             display: block;
             color: rgb(255, 222, 58);
             font-weight: 800;
@@ -131,8 +158,8 @@ body {
         }
         >record {
             position: absolute;
-            top: 40px;
-            right: 20px;
+            top: -52px;
+            right: 0;
             display: block;
             color: white;
             font-weight: 800;
@@ -142,7 +169,7 @@ body {
             z-index: 9;
         }
 
-        >ball {
+        ball {
             background: rgb(255, 255, 255);
             display: block;
             position: absolute;
@@ -157,7 +184,7 @@ body {
             transform: translateY(-50%);
         }
 
-        >enemy {
+        enemy {
             border-radius: 100%;
             display: block;
             position: absolute;
@@ -175,23 +202,5 @@ body {
       
     }
 
-    >newGame {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        display: block;
-        color: rgb(255, 255, 255);
-        font-weight: 800;
-        text-align: right;
-        font-size: 12px;
-        opacity: .6;
-        z-index: 9;
-        transition: all .1s;
-        cursor: pointer;
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-
+    
 }
