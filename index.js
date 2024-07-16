@@ -61,6 +61,10 @@ window.addEventListener(`load`, function(){
                     window.location.reload();
                 }
             });
+            const audio = document.querySelector(`audio`);
+            if (audio) {
+                audio.stop();
+            }
         }
         if (ball.getBoundingClientRect().top < 320) {
             clearInterval(enemies);
@@ -72,6 +76,10 @@ window.addEventListener(`load`, function(){
                     window.location.reload();
                 }
             });
+            const audio = document.querySelector(`audio`);
+            if (audio) {
+                audio.stop();
+            }
         }
 
         if (enemy.getBoundingClientRect().left < 360 && enemy.getBoundingClientRect().left > 300) {
@@ -88,6 +96,10 @@ window.addEventListener(`load`, function(){
                     }
                 });
             } 
+            const audio = document.querySelector(`audio`);
+            if (audio) {
+                audio.pause();
+            }
         }
 
     }, 100);
