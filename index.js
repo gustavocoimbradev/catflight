@@ -65,7 +65,7 @@ window.addEventListener(`load`, function(){
         if (enemy.getBoundingClientRect().left < 360 && enemy.getBoundingClientRect().left > 300) {
             const enemyRect = enemy.getBoundingClientRect();
             const ballRect = ball.getBoundingClientRect();
-            if (Math.abs(enemyRect.top - ballRect.top) < 70) {
+            if (Math.abs(enemyRect.top - ballRect.top) < 50) {
                 clearInterval(enemies);
                 clearInterval(map);
                 myGame.setAttribute(`you-lost`,true);
@@ -75,12 +75,7 @@ window.addEventListener(`load`, function(){
                         window.location.reload();
                     }
                 });
-            } else {
-                if (enemy.getBoundingClientRect().left == 300) {
-                    const currentScore = parseInt(scoreNumber.textContent);
-                    scoreNumber.textContent = currentScore + 1;
-                }
-            }
+            } 
         }
 
     }, 100);
@@ -102,6 +97,8 @@ window.addEventListener(`load`, function(){
         if (leftPosition < -100) {
             leftPosition = 1000;
             enemy.style.bottom = `${Math.floor(Math.random() * 160)}px`
+            const currentScore = parseInt(scoreNumber.textContent);
+            scoreNumber.textContent = currentScore + 1;
         }
     }, 50);
 
