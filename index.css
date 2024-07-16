@@ -9,6 +9,21 @@ body {
   height: 100vh;
   background: rgb(44, 44, 44);
 }
+body > warning {
+  display: none;
+}
+@media (max-width: 1199px) {
+  body > my-game {
+    display: none;
+  }
+  body > warning {
+    display: block;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+}
 body > my-game {
   position: relative;
   overflow: hidden;

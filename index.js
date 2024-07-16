@@ -45,6 +45,7 @@ window.addEventListener(`load`, function(){
             ball.style.top = '120%';
         }
     });
+    
 
 
     // Check
