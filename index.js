@@ -36,17 +36,12 @@ window.addEventListener(`load`, function(){
     document.addEventListener('keyup', function(event) {
         if (event.key === 'ArrowUp' && ball) {
             isFlying = false;
-            ball.style.transition = 'top 0.6s';
-            ball.style.top = '60%';
+            ball.style.transition = 'top 1.2s';
+            ball.style.top = '120%';
         }
     });
     
-    setInterval(function() {
-        if (!isFlying && ball) {
-            ball.style.transition = 'top 1s';
-            ball.style.top = '120%';
-        }
-    }, 500);
+ 
 
     // Check
 
