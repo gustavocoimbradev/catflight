@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const myGame = document.querySelector(`my-game`);
 const ball = myGame.querySelector(`ball`);
-const enemy = myGame.querySelector(`enemy`);
+const enemy = myGame.querySelectorAll(`enemy`);
 const playable = myGame.querySelector(`playable`);
 const scoreNumber = myGame.querySelector(`score>number`);
 const recordNumber = myGame.querySelector(`record>number`);
@@ -88,24 +88,35 @@ function speedUp() {
 }
 
 function sendEnemies() {
-    let leftPosition = 1000;
-    enemies = setInterval(function() {
-        leftPosition -= parseFloat(myGame.getAttribute(`speed`));
-        enemy.style.left = `${leftPosition}px`;  
-        if (leftPosition < -100) {
-            leftPosition = 1000;
-            enemy.style.top = `${Math.floor(Math.random() * 120)}px`
+    let leftPosition1 = 1000;
+    let leftPosition2 = 1000;
+
+    let enemies1 = setInterval(function() {
+        leftPosition1 -= parseFloat(myGame.getAttribute(`speed`));
+        enemy[0].style.left = `${leftPosition1}px`;  
+        if (leftPosition1 < -100) {
+            leftPosition1 = 1000;
+            enemy[0].style.top = `${Math.floor(Math.random() * 290)}px`;
             currentScore = parseInt(scoreNumber.textContent);
             scoreNumber.textContent = currentScore + 1;
         }
     }, 30);
+
+    let enemies2 = setInterval(function() {
+        leftPosition2 -= parseFloat(myGame.getAttribute(`speed`)) * 2;
+        enemy[1].style.left = `${leftPosition2}px`;  
+        if (leftPosition2 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
+            leftPosition2 = 1000;
+        }
+    }, 30);
 }
+
 
 function scrollMap() {
     let backgroundPosition = 0;
     map = setInterval(function() {
         backgroundPosition -= parseFloat(myGame.getAttribute(`speed`));
-        myGame.style.backgroundPosition = `${backgroundPosition}px 362px`;    
+        myGame.style.backgroundPosition = `${backgroundPosition}px -129px`;    
     }, 50);
 }
 
@@ -128,21 +139,25 @@ function checkPosition() {
             const insideVertically = childRect.top >= parentRect.top - margin && childRect.bottom <= parentRect.bottom;
             return insideVertically;
         }
-        
-
 
         if (!isElementInsideParent()) {
             clearInterval(interval);
             gameOver();
         }
 
-        const enemyRect = enemy.getBoundingClientRect();
+        const enemyRect0 = enemy[0].getBoundingClientRect();
+        const enemyRect1 = enemy[1].getBoundingClientRect();
         const ballRect = ball.getBoundingClientRect();
 
-        const horizontalProximity = Math.abs(enemyRect.left - ballRect.left) < 30;
-        const verticalProximity = Math.abs(enemyRect.top - ballRect.top) < 30;
+        const horizontalProximity0 = Math.abs(enemyRect0.left - ballRect.left) < 46;
+        const verticalProximity0 = Math.abs(enemyRect0.top - ballRect.top) < 46;
         
-        if (horizontalProximity && verticalProximity) {
+        const horizontalProximity1 = Math.abs(enemyRect1.left - ballRect.left) < 46;
+        const verticalProximity1 = Math.abs(enemyRect1.top - ballRect.top) < 46;
+
+      
+
+        if ((horizontalProximity0 && verticalProximity0) || (horizontalProximity1 && verticalProximity1)) {
             clearInterval(interval);
             gameOver();
         }
@@ -151,24 +166,90 @@ function checkPosition() {
 }
 
 function flyBall() {
+    let groundLimit = 300;
+    let slowDownStart = 250;
+    let gravity = 5;
+    let velocity = 0;
+    let isFalling = false;
+    let isHovering = false;
+
     document.addEventListener('keydown', function(event) {
         audio('soundtrack', 'play');
         if (event.key === ' ' && ball) {
-            if (!isFlying) {
-                isFlying = true;
-                ball.style.transition = 'top .6s';
-                ball.style.top = '-20%';
-            }
+            isFlying = true;
+            isFalling = false;
+            isHovering = false;
+            velocity = 0;
+            ball.style.transition = 'top ease-in-out 0.8s';
+            ball.style.top = '-20%';
         }
     });
+
     document.addEventListener('keyup', function(event) {
         if (event.key === ' ' && ball) {
             isFlying = false;
-            ball.style.transition = 'top 1s';
-            ball.style.top = '120%';
+            if (!isFalling) {
+                isFalling = true;
+                velocity = 0;
+                fall();
+            }
         }
     });
+
+    function fall() {
+        function update() {
+            let currentTop = parseInt(getComputedStyle(ball).top);
+
+            if (isFlying) return;
+
+            if (currentTop >= slowDownStart && currentTop < groundLimit) {
+                let progress = (currentTop - slowDownStart) / (groundLimit - slowDownStart);
+                velocity = gravity * (1 - Math.pow(progress, 2));
+                velocity = Math.max(velocity, 1);
+                ball.style.transition = `top ease-in-out ${0.1 + progress * .02}s`;
+                ball.style.top = (currentTop + velocity) + 'px';
+                requestAnimationFrame(update);
+            } else if (currentTop >= groundLimit - 5) {
+                ball.style.transition = 'top ease-in-out 0.8s';
+                ball.style.top = groundLimit + 'px';
+                isFalling = false;
+                velocity = 0;
+                if (!isHovering) {
+                    isHovering = true;
+                    hoverEffect();
+                }
+            } else {
+                velocity += gravity;
+                ball.style.transition = 'top ease-in-out 0.1s';
+                ball.style.top = (currentTop + velocity) + 'px';
+                requestAnimationFrame(update);
+            }
+        }
+        requestAnimationFrame(update);
+    }
+
+    function hoverEffect() {
+        function hoverUp() {
+            if (!isFlying && !isFalling) {
+                ball.style.transition = 'top ease-in-out 1.2s';
+                ball.style.top = (groundLimit - 10) + 'px';
+                setTimeout(hoverDown, 800);
+            }
+        }
+
+        function hoverDown() {
+            if (!isFlying && !isFalling) {
+                ball.style.transition = 'top ease-in-out 1.2s';
+                ball.style.top = (groundLimit + 10) + 'px';
+                setTimeout(hoverUp, 800);
+            }
+        }
+
+        hoverUp();
+    }
 }
+
+
 
 function handleRecords() {
     if (localStorage.getItem(`record`)) {

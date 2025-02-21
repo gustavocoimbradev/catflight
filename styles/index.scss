@@ -36,7 +36,7 @@ body {
         background-size: 1000px;
         background-repeat: repeat;
         width: 900px; 
-        height: 200px;
+        height: 400px;
         max-width: 100%;
 
         playable {
@@ -260,18 +260,27 @@ body {
             transform: translateY(-50%);
         }
 
-        enemy {
-            display: block;
-            position: absolute;
-            background-image: url(../sprites/enemy.gif);
-            background-size: 108px;
-            background-position: center;
-            background-repeat: no-repeat;
-            width: 70px; 
-            height: 70px;
-            left: 1000px;
-            top: 50%;
-            transform: translateY(-50%) scaleX(-1);                       
+        >playable {
+            >enemy {
+                display: block;
+                position: absolute;
+                background-image: url(../sprites/enemy.gif);
+                background-size: 108px;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 70px;
+                left: 1000px;
+                &:nth-of-type(1) {
+                    top: 50%;
+                    width: 70px; 
+                    transform: translateY(-50%) scaleX(-1);    
+                }   
+                &:nth-of-type(2) {
+                    transform: scaleX(-1); 
+                    width: 100px;  
+                    top: calc(100% - 100px);  
+                }                   
+            }
         }
 
       
