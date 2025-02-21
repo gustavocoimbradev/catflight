@@ -103,7 +103,7 @@ function sendEnemies() {
         leftPosition1 -= parseFloat(myGame.getAttribute(`speed`));
         enemy[0].style.left = `${leftPosition1}px`;  
         if (leftPosition1 < -100) {
-            leftPosition1 = leftPosition1Original;
+            leftPosition1 = 1000;
             enemy[0].style.top = `${Math.floor(Math.random() * 290)}px`;
             currentScore = parseInt(scoreNumber.textContent);
             scoreNumber.textContent = currentScore + 1;
@@ -114,7 +114,7 @@ function sendEnemies() {
         leftPosition2 -= parseFloat(myGame.getAttribute(`speed`)) * 2;
         enemy[1].style.left = `${leftPosition2}px`;  
         if (leftPosition2 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
-            leftPosition2 = leftPosition2Original;
+            leftPosition2 = 1500;
         }
     }, 30);
 
@@ -122,7 +122,7 @@ function sendEnemies() {
         leftPosition3 -= parseFloat(myGame.getAttribute(`speed`)) * 1;
         enemy[2].style.left = `${leftPosition3}px`;  
         if (leftPosition3 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
-            leftPosition3 = leftPosition3Original;
+            leftPosition3 = 2000;
         }
     }, 30);
 
@@ -131,7 +131,7 @@ function sendEnemies() {
         enemy[3].style.left = `${leftPosition4}px`;  
         if (leftPosition4 < Math.floor(Math.random() * (-32000 + 7000) - 7000)) {
             enemy[0].style.top = `${Math.floor(Math.random() * 290)}px`;
-            leftPosition4 = leftPosition4Original;
+            leftPosition4 = 2500;
         }
     }, 30);
 
@@ -207,7 +207,7 @@ function flyBall() {
     let skyLimit = 20;
     let groundLimit = 300;
     let slowDownStart = 250;
-    let gravity = 5;
+    let gravity = 10;
     let velocity = 0;
     let isFalling = false;
     let isHovering = false;
@@ -220,7 +220,7 @@ function flyBall() {
                 isFalling = false;
                 isHovering = false;
                 velocity = 0;
-                ball.style.transition = 'top ease-in-out 1s';
+                ball.style.transition = 'top ease-in-out .5s';
                 ball.style.top = Math.max(skyLimit, parseInt(getComputedStyle(ball).top) - 100) + 'px';
             }
         }
@@ -261,7 +261,7 @@ function flyBall() {
                 }
             } else {
                 velocity += gravity;
-                ball.style.transition = 'top ease-in-out 0.1s';
+                ball.style.transition = 'top ease-in-out 0.2s';
                 ball.style.top = (currentTop + velocity) + 'px';
                 requestAnimationFrame(update);
             }
