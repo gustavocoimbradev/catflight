@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -7,8 +7,8 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background: rgb(44, 44, 44);
-  font-family: "Verdana", sans-serif;
+  background: #729af4;
+  font-family: "Pixelify Sans", serif;
   user-select: none;
 }
 body > warning {
@@ -28,8 +28,8 @@ body > warning {
 }
 body > my-game {
   position: relative;
-  background-image: url(../sprites/map.gif);
-  background-size: contain;
+  background-image: url(../sprites/map.jpg);
+  background-size: 1000px;
   background-repeat: repeat;
   width: 900px;
   height: 200px;
@@ -48,8 +48,8 @@ body > my-game > restartGame {
   bottom: -55px;
   left: 0;
   display: block;
-  color: rgb(255, 255, 255);
-  background: rgb(0, 0, 0);
+  color: #e5f2fa;
+  border: solid 1px #e5f2fa;
   padding: 10px 20px;
   font-weight: 800;
   text-align: right;
@@ -120,11 +120,11 @@ body > my-game > createGame {
   cursor: pointer;
 }
 body > my-game[you-lost]::after {
-  content: "Você perdeu!";
+  content: "You lost!";
   position: absolute;
   width: 400px;
   height: 150px;
-  color: red;
+  color: #729af4;
   font-weight: 900;
   top: 50%;
   left: 50%;
@@ -154,14 +154,14 @@ body > my-game[you-lost] ball {
 body > my-game[you-lost] enemy {
   display: none;
 }
-body > my-game[you-lost] > welcome {
+body > my-game[you-lost] > welcome:last-of-type {
   display: none !important;
 }
 body > my-game > welcome:first-of-type {
   position: absolute;
   width: 100%;
   height: 150px;
-  color: white;
+  color: #ffffff;
   font-weight: 900;
   top: -40px;
   left: 0;
@@ -176,7 +176,7 @@ body > my-game[escape-something] > welcome:last-of-type {
   position: absolute;
   width: 100%;
   height: 150px;
-  color: white;
+  color: #729af4;
   font-weight: 900;
   top: 50%;
   left: 50%;
@@ -203,7 +203,7 @@ body > my-game > score {
   top: -52px;
   right: 0;
   display: block;
-  color: rgb(255, 222, 58);
+  color: rgb(255, 255, 255);
   font-weight: 400;
   text-align: right;
   font-size: 12px;
@@ -224,32 +224,29 @@ body > my-game > record {
   z-index: 9;
 }
 body > my-game ball {
-  background: rgb(255, 255, 255);
   display: block;
   position: absolute;
-  border-radius: 100%;
   transition: all 0.5s;
-  background-size: cover;
+  background-size: 108px;
   background-position: center;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
 }
 body > my-game enemy {
-  border-radius: 100%;
   display: block;
   position: absolute;
-  background-image: url(../sprites/enemy.png);
-  background-size: contain;
+  background-image: url(../sprites/enemy.gif);
+  background-size: 108px;
   background-position: center;
   background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   left: 1000px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scaleX(-1);
 }
 
 /*# sourceMappingURL=index.css.map */

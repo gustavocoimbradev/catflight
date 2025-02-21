@@ -105,7 +105,7 @@ function scrollMap() {
     let backgroundPosition = 0;
     map = setInterval(function() {
         backgroundPosition -= parseFloat(myGame.getAttribute(`speed`));
-        myGame.style.backgroundPosition = `${backgroundPosition}px 0`;    
+        myGame.style.backgroundPosition = `${backgroundPosition}px 362px`;    
     }, 50);
 }
 
