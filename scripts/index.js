@@ -88,27 +88,53 @@ function speedUp() {
 }
 
 function sendEnemies() {
-    let leftPosition1 = 1000;
-    let leftPosition2 = 1000;
 
-    let enemies1 = setInterval(function() {
+    const leftPosition1Original = 1000;
+    const leftPosition2Original = 10000;
+    const leftPosition3Original = 20000;
+    const leftPosition4Original = 30000;
+
+    let leftPosition1 = leftPosition1Original;
+    let leftPosition2 = leftPosition2Original;
+    let leftPosition3 = leftPosition3Original;
+    let leftPosition4 = leftPosition4Original;
+
+    let enemies0 = setInterval(function() {
         leftPosition1 -= parseFloat(myGame.getAttribute(`speed`));
         enemy[0].style.left = `${leftPosition1}px`;  
         if (leftPosition1 < -100) {
-            leftPosition1 = 1000;
+            leftPosition1 = leftPosition1Original;
             enemy[0].style.top = `${Math.floor(Math.random() * 290)}px`;
             currentScore = parseInt(scoreNumber.textContent);
             scoreNumber.textContent = currentScore + 1;
         }
     }, 30);
 
-    let enemies2 = setInterval(function() {
+    let enemies1 = setInterval(function() {
         leftPosition2 -= parseFloat(myGame.getAttribute(`speed`)) * 2;
         enemy[1].style.left = `${leftPosition2}px`;  
         if (leftPosition2 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
-            leftPosition2 = 1000;
+            leftPosition2 = leftPosition2Original;
         }
     }, 30);
+
+    let enemies2 = setInterval(function() {
+        leftPosition3 -= parseFloat(myGame.getAttribute(`speed`)) * 1;
+        enemy[2].style.left = `${leftPosition3}px`;  
+        if (leftPosition3 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
+            leftPosition3 = leftPosition3Original;
+        }
+    }, 30);
+
+    let enemies3 = setInterval(function() {
+        leftPosition4 -= parseFloat(myGame.getAttribute(`speed`)) * 2;
+        enemy[3].style.left = `${leftPosition4}px`;  
+        if (leftPosition4 < Math.floor(Math.random() * (-32000 + 7000) - 7000)) {
+            enemy[0].style.top = `${Math.floor(Math.random() * 290)}px`;
+            leftPosition4 = leftPosition4Original;
+        }
+    }, 30);
+
 }
 
 
@@ -147,6 +173,8 @@ function checkPosition() {
 
         const enemyRect0 = enemy[0].getBoundingClientRect();
         const enemyRect1 = enemy[1].getBoundingClientRect();
+        const enemyRect2 = enemy[2].getBoundingClientRect();
+        const enemyRect3 = enemy[3].getBoundingClientRect();
         const ballRect = ball.getBoundingClientRect();
 
         const horizontalProximity0 = Math.abs(enemyRect0.left - ballRect.left) < 46;
@@ -155,9 +183,19 @@ function checkPosition() {
         const horizontalProximity1 = Math.abs(enemyRect1.left - ballRect.left) < 46;
         const verticalProximity1 = Math.abs(enemyRect1.top - ballRect.top) < 46;
 
-      
+        const horizontalProximity2 = Math.abs(enemyRect2.left - ballRect.left) < 46;
+        const verticalProximity2 = Math.abs(enemyRect2.top - ballRect.top) < 46;
 
-        if ((horizontalProximity0 && verticalProximity0) || (horizontalProximity1 && verticalProximity1)) {
+        const horizontalProximity3 = Math.abs(enemyRect3.left - ballRect.left) < 46;
+        const verticalProximity3 = Math.abs(enemyRect3.top - ballRect.top) < 46;
+
+
+        if (
+            (horizontalProximity0 && verticalProximity0) 
+            || (horizontalProximity1 && verticalProximity1)
+            || (horizontalProximity2 && verticalProximity2)
+            || (horizontalProximity3 && verticalProximity3)
+        ) {
             clearInterval(interval);
             gameOver();
         }
@@ -166,6 +204,7 @@ function checkPosition() {
 }
 
 function flyBall() {
+    let skyLimit = 20;
     let groundLimit = 300;
     let slowDownStart = 250;
     let gravity = 5;
@@ -176,12 +215,14 @@ function flyBall() {
     document.addEventListener('keydown', function(event) {
         audio('soundtrack', 'play');
         if (event.key === ' ' && ball) {
-            isFlying = true;
-            isFalling = false;
-            isHovering = false;
-            velocity = 0;
-            ball.style.transition = 'top ease-in-out 0.8s';
-            ball.style.top = '-20%';
+            if (!isFlying && parseInt(getComputedStyle(ball).top) > skyLimit) {
+                isFlying = true;
+                isFalling = false;
+                isHovering = false;
+                velocity = 0;
+                ball.style.transition = 'top ease-in-out 1s';
+                ball.style.top = Math.max(skyLimit, parseInt(getComputedStyle(ball).top) - 100) + 'px';
+            }
         }
     });
 
@@ -206,7 +247,7 @@ function flyBall() {
                 let progress = (currentTop - slowDownStart) / (groundLimit - slowDownStart);
                 velocity = gravity * (1 - Math.pow(progress, 2));
                 velocity = Math.max(velocity, 1);
-                ball.style.transition = `top ease-in-out ${0.1 + progress * .02}s`;
+                ball.style.transition = `top ease-in-out ${0.1 + progress * 0.02}s`;
                 ball.style.top = (currentTop + velocity) + 'px';
                 requestAnimationFrame(update);
             } else if (currentTop >= groundLimit - 5) {
@@ -248,7 +289,6 @@ function flyBall() {
         hoverUp();
     }
 }
-
 
 
 function handleRecords() {
