@@ -115,6 +115,7 @@ function sendEnemies() {
         enemy[1].style.left = `${leftPosition2}px`;  
         if (leftPosition2 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
             leftPosition2 = 1500;
+            scoreNumber.textContent = currentScore + 2;
         }
     }, 30);
 
@@ -123,6 +124,7 @@ function sendEnemies() {
         enemy[2].style.left = `${leftPosition3}px`;  
         if (leftPosition3 < Math.floor(Math.random() * (-11000 + 2000) - 2000)) {
             leftPosition3 = 2000;
+            scoreNumber.textContent = currentScore + 3;
         }
     }, 30);
 
@@ -132,6 +134,7 @@ function sendEnemies() {
         if (leftPosition4 < Math.floor(Math.random() * (-32000 + 7000) - 7000)) {
             enemy[0].style.top = `${Math.floor(Math.random() * 290)}px`;
             leftPosition4 = 2500;
+            scoreNumber.textContent = currentScore + 4;
         }
     }, 30);
 
